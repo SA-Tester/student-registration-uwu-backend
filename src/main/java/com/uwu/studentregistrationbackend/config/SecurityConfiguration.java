@@ -98,26 +98,26 @@ public class SecurityConfiguration {
 
 
                 //policies
-                policies.add(Policy.builder().policy("Finance").policyCode("FINANCE").type("MAIN").build());
-                policies.add(Policy.builder().policy("Project").policyCode("PROJECT").type("MAIN").build());
-                policies.add(Policy.builder().policy("Project_timeline").policyCode("PROJECT_TIME").type("MAIN").build());
-                policies.add(Policy.builder().policy("Project_finance").policyCode("PROJECT_FINANCE").type("PROJECT").build());
-                policies.add(Policy.builder().policy("Project_task").policyCode("PROJECT_TASK").type("PROJECT").build());
-                policies.add(Policy.builder().policy("Project_assign").policyCode("PROJECT_ASSIGN").type("PROJECT").build());
-                policies.add(Policy.builder().policy("Project_events").policyCode("PROJECT_EVENT").type("PROJECT").build());
-                policies.add(Policy.builder().policy("Excom").policyCode("EXCOM").type("EXCOM").build());
-                policies.add(Policy.builder().policy("Excom_All").policyCode("EXCOM_ALL").type("EXCOM").build());
-                policies.add(Policy.builder().policy("Excom_task").policyCode("EXCOM_TASK").type("EXCOM").build());
-                policies.add(Policy.builder().policy("Excom_task_assign").policyCode("EXCOM_TASK_ASSIGN").type("EXCOM").build());
-                policies.add(Policy.builder().policy("Excom_assign").policyCode("EXCOM_ASSIGN").type("EXCOM").build());
-                policies.add(Policy.builder().policy("service").policyCode("SERVICE").type("MAIN").build());
-                policies.add(Policy.builder().policy("service_volunteer").policyCode("SERVICE_VOLUNTEER").type("MAIN").build());
+//                policies.add(Policy.builder().policy("Finance").policyCode("FINANCE").type("MAIN").build());
+//                policies.add(Policy.builder().policy("Project").policyCode("PROJECT").type("MAIN").build());
+//                policies.add(Policy.builder().policy("Project_timeline").policyCode("PROJECT_TIME").type("MAIN").build());
+//                policies.add(Policy.builder().policy("Project_finance").policyCode("PROJECT_FINANCE").type("PROJECT").build());
+//                policies.add(Policy.builder().policy("Project_task").policyCode("PROJECT_TASK").type("PROJECT").build());
+//                policies.add(Policy.builder().policy("Project_assign").policyCode("PROJECT_ASSIGN").type("PROJECT").build());
+//                policies.add(Policy.builder().policy("Project_events").policyCode("PROJECT_EVENT").type("PROJECT").build());
+//                policies.add(Policy.builder().policy("Excom").policyCode("EXCOM").type("EXCOM").build());
+//                policies.add(Policy.builder().policy("Excom_All").policyCode("EXCOM_ALL").type("EXCOM").build());
+//                policies.add(Policy.builder().policy("Excom_task").policyCode("EXCOM_TASK").type("EXCOM").build());
+//                policies.add(Policy.builder().policy("Excom_task_assign").policyCode("EXCOM_TASK_ASSIGN").type("EXCOM").build());
+//                policies.add(Policy.builder().policy("Excom_assign").policyCode("EXCOM_ASSIGN").type("EXCOM").build());
+//                policies.add(Policy.builder().policy("service").policyCode("SERVICE").type("MAIN").build());
+//                policies.add(Policy.builder().policy("service_volunteer").policyCode("SERVICE_VOLUNTEER").type("MAIN").build());
 
 
-                for (Policy policy : policies) {
-                    Policy savedPolicies = policyService.CreatePolicy(policy);
-                    System.out.println("Saved Policy: " + savedPolicy);
-                }
+//                for (Policy policy : policies) {
+//                    Policy savedPolicies = policyService.CreatePolicy(policy);
+//                    System.out.println("Saved Policy: " + savedPolicy);
+//                }
 
 
                 Set<Policy> otherpolicies = new HashSet<>();
@@ -134,7 +134,7 @@ public class SecurityConfiguration {
                         .build();
 
 
-                var memberUserRole = roleServices.CreateRole(userRoleMember);
+                 roleServices.CreateRole(userRoleMember);
 
                 var AdminRole = roleServices.CreateRole(userRole);
 
@@ -159,22 +159,22 @@ public class SecurityConfiguration {
                 userRoleDetailsServices.createUserRoleDetails(userRoleDetails);
 
                 //test users
-                for (char c = 'a'; c <= 'z'; c++) {
-                    users.add(User.builder().email(c + "@gmail.com").password(passwordEncoder.encode("123")).firstName(c + "Mohamed").lastName(c + "Aasath").contactNo("0755701765").createdDate(LocalDateTime.now()).status("VERIFIED").build());
-                }
-
-
-                users.forEach(user -> {
-                    var newuser = userService.saveUser(user);
-                    var testuser = UserRoleDetails.builder()
-                            .user(newuser)
-                            .role(memberUserRole)
-                            .isActive(true)
-                            .type(memberUserRole.getType())
-                            .start_date(LocalDateTime.now()).build();
-
-                    userRoleDetailsServices.createUserRoleDetails(testuser);
-                });
+//                for (char c = 'a'; c <= 'z'; c++) {
+//                    users.add(User.builder().email(c + "@gmail.com").password(passwordEncoder.encode("123")).firstName(c + "Mohamed").lastName(c + "Aasath").contactNo("0755701765").createdDate(LocalDateTime.now()).status("VERIFIED").build());
+//                }
+//
+//
+//                users.forEach(user -> {
+//                    var newuser = userService.saveUser(user);
+//                    var testuser = UserRoleDetails.builder()
+//                            .user(newuser)
+//                            .role(memberUserRole)
+//                            .isActive(true)
+//                            .type(memberUserRole.getType())
+//                            .start_date(LocalDateTime.now()).build();
+//
+//                    userRoleDetailsServices.createUserRoleDetails(testuser);
+//                });
             }
 
         };
